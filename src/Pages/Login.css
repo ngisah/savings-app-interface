@@ -1,0 +1,43 @@
+.user_login{
+    
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+
+    
+}
+h1{
+    font-size: 20px;
+    color: aqua;
+   
+    margin-bottom: 1rem;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    gap: 20px;
+    width: 200px;
+    background-color: white;
+}
+
+input{
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid gray;
+    
+}
+
+button{
+    padding: 10px;
+    background-color: teal;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px; 
+}
