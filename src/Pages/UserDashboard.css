@@ -1,33 +1,17 @@
 .user-dashboard {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
+    margin: 2rem;
   }
   
-  .user-dashboard header {
-    text-align: center;
-    margin-bottom: 20px;
+  .contribution-info p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
   }
   
-  .user-info h2, .contributions h2 {
-    margin-top: 0;
+  .transaction-history h3 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
   }
   
-  .user-info p {
-    margin-bottom: 10px;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  th {
-    background-color: #f2f2f2;
+  .transaction-history .btn-primary {
+    margin-bottom: 1rem;
   }

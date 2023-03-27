@@ -1,50 +1,30 @@
 import React from 'react'
 import './UserDashboard.css'
+import {Button} from 'react-bootstrap'
 
 const UserDashboard = () => {
-  return (
-    <div>
-        <div className="user-dashboard">
-      <header>
-        <h1>Welcome to your Dashboard</h1>
-      </header>
-      <div className="user-info">
-        <h2>User Information</h2>
-        <p>Name: John Doe</p>
-        <p>Email: john.doe@example.com</p>
+    const yearToDateContribution = 5000; // Replace with actual data
+    const monthToDateContribution = 500; // Replace with actual data
+  
+    const handleDownloadPdf = () => {
+      // TODO: Implement PDF download functionality
+      console.log('Download PDF clicked');
+    };
+  
+    return (
+      <div className="user-dashboard">
+        <h2>My Dashboard</h2>
+        <div className="contribution-info">
+          <p>Year-to-date contribution: ${yearToDateContribution}</p>
+          <p>Month-to-date contribution: ${monthToDateContribution}</p>
+        </div>
+        <div className="transaction-history">
+          <h3>Transaction History</h3>
+          <Button variant="primary" onClick={handleDownloadPdf}>Download as PDF</Button>
+          {/* TODO: Render transaction history table */}
+        </div>
       </div>
-      <div className="contributions">
-        <h2>Contributions</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Date</th>
-              <th>Amount</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>January 1, 2022</td>
-              <td>$100</td>
-              <td>Paid</td>
-            </tr>
-            <tr>
-              <td>February 1, 2022</td>
-              <td>$50</td>
-              <td>Paid</td>
-            </tr>
-            <tr>
-              <td>March 1, 2022</td>
-              <td>$75</td>
-              <td>Paid</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    </div>
-  )
-}
-
-export default UserDashboard
+    );
+  };
+  
+  export default UserDashboard;
