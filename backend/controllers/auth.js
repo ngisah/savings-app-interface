@@ -1,5 +1,7 @@
 import { db } from "../db.js";
 import bcrypt from "bcrypt";
+import jwt from 'jsonwebtoken'
+import cookieParser from 'cookie-parser'
 
 
 export const register = (req, res) => {
@@ -26,6 +28,26 @@ export const register = (req, res) => {
   });
 };
 
-export const login = (req, res) => {};
+export const login = (req, res) => {
+    // check if user exists
+const q = 'SELECT * FROM members WHERE email = ?';
+db.query(q,[req.body.email], (err, data) => {
+    if (err) return res.status(err);
+    if (data.length===0) return res.status(404).json('User not found');
+    
+    // check password
+    const validPassword = bcrypt.compareSync(req.body.password, data[0].password);
+    if (!validPassword) return res.status(401).json('Invalid password');
+    
+    // create and assign a token
+    const token = jwt.sign({id: data[0].id}, process.env.TOKEN_SECRET);
+    const {password, ...other} = data[0];
+    res.cookie('access token', token,{
+        httpOnly: true,
+    }).status(200).json(other)
+})
+};
+
+
 
 export const logout = (req, res) => {};
