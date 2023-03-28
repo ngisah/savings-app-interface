@@ -35,7 +35,7 @@ const Registration = () => {
         <h1>Registration</h1>
         <form>
             <input type='text' placeholder='Username' name='username' onChange={handleChange} />
-            <input type='text' placeholder='email' name='email' onChange={handleChange} />
+            <input type='email' placeholder='email' name='email' onChange={handleChange} />
             <input type='text' placeholder='phone' name='phone' onChange={handleChange} />
 
             <input type='password' placeholder='password' name='password' onChange={handleChange} />
