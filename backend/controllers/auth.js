@@ -40,7 +40,7 @@ db.query(q,[req.body.email], (err, data) => {
     if (!validPassword) return res.status(401).json('Invalid password');
     
     // create and assign a token
-    const token = jwt.sign({id: data[0].id}, process.env.TOKEN_SECRET);
+    const token = jwt.sign({id: data[0].id}, "jwtkey");
     const {password, ...other} = data[0];
     res.cookie('access token', token,{
         httpOnly: true,

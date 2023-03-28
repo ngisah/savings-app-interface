@@ -23,7 +23,7 @@ const Login = () => {
 
     try {
       await axios.post('/auth/login', inputs)
-      navigate('/');
+      navigate('/userdashboard');
     }
     catch (err) {
       setError(err.response.data)
