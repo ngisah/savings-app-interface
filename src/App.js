@@ -6,6 +6,7 @@ import './App.css';
 import Login from './Pages/Login';
 import UserDashboard from "./Pages/UserDashboard";
 import AdminLogin from "./Pages/AdminLogin";
+import Registration from "./Pages/Registration";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />
+  },
+  {
+    path: "/registration",
+    element: <Registration />
   },
   {
     path: "/adminlogin",
