@@ -1,6 +1,7 @@
 import React from 'react'
 import './UserDashboard.css'
 import {Button} from 'react-bootstrap'
+import Mpesa from '../components/Mpesa'
 
 const UserDashboard = () => {
     const yearToDateContribution = 5000; // Replace with actual data
@@ -17,6 +18,7 @@ const UserDashboard = () => {
         <div className="contribution-info">
           <p>Year-to-date contribution: ${yearToDateContribution}</p>
           <p>Month-to-date contribution: ${monthToDateContribution}</p>
+          <Mpesa />
         </div>
         <div className="transaction-history">
           <h3>Transaction History</h3>
