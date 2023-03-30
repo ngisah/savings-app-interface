@@ -1,7 +1,7 @@
 import { db } from "../db.js";
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken'
-import cookieParser from 'cookie-parser'
+// import cookieParser from 'cookie-parser'
 
 
 export const register = (req, res) => {
@@ -42,9 +42,18 @@ db.query(q,[req.body.email], (err, data) => {
     // create and assign a token
     const token = jwt.sign({id: data[0].id}, "jwtkey");
     const {password, ...other} = data[0];
+
+     // add username to response data
+    const responseData = {
+      
+      username: data[0].username,
+      ...other,
+      token
+  };
     res.cookie('access token', token,{
         httpOnly: true,
-    }).status(200).json(other)
+    }).status(200).json(responseData)
+     
 })
 };
 

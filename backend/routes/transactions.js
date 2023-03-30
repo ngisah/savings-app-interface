@@ -1,11 +1,11 @@
 import express from 'express';
+import { getTransactions, getTransaction } from '../controllers/transaction.js';
 
 
 const router = express.Router();
 
-router.get('/', (req,res)=>{
-    res.send('This is the transactions route');
-})
+router.get('/', getTransactions);
+router.get('/:id', getTransaction);
 
 
 export default router;

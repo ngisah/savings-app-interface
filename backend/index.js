@@ -2,20 +2,28 @@ import express from 'express';
 import axios from 'axios';
 import authRoutes from './routes/auth.js';
 import transactionsRoutes from './routes/transactions.js';
+import memberRoutes from './routes/members.js';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
 import * as dotenv from 'dotenv';
+dotenv.config()
 
 // import mpesaRoutes from './routes/mpesa.js'
 
-dotenv.config()
 
 const app = express();
+app.listen(8800, () => {
+  console.log('Connected to server');
+});
 
 app.use(cors());
 app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use('/auth', authRoutes);
+app.use('/members', memberRoutes);
 app.use('/transactions', transactionsRoutes);
 // app.use('/mpesa', mpesaRoutes);
 
@@ -78,7 +86,7 @@ app.post('/stkpush', generateToken, async (req, res) => {
       "PartyA":`254${phone}`,    
       "PartyB":shortcode,    
       "PhoneNumber":`254${phone}`,    
-      "CallBackURL": "https://mydomain.com/pat",    
+      "CallBackURL": "https://e6ec-41-60-238-220.in.ngrok.io/callback",    
       "AccountReference":`254${phone}`,    
       "TransactionDesc":"Test"
    
@@ -99,10 +107,18 @@ app.post('/stkpush', generateToken, async (req, res) => {
 
 });
 
+app.post('/callback', (req, res) => {
+  const result = req.body.Body.stkCallback;
+  console.log(result);
 
+  // extract the result body from the callback
+  const resultBody = result.CallbackMetadata.Item.find(item => item.Name === 'ResultDesc').Value;
+  console.log(resultBody);
 
-
-
-app.listen(8800, () => {
-  console.log('Connected to server');
+  res.sendStatus(200); // send a success response to Mpesa API
 });
+
+
+
+
+
